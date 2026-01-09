@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alugar Jogos - Assombrado Games</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Nosifer&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/estiloAlugar.css') }}">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<body>
+
+<header>
+    <div class="logo">
+        <a href="/"><img src="{{ url_for('static', filename='img/assombra.png') }}" alt="Assombrado Games"></a>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="/alugar">Alugar</a></li>
+            <li><a href="/alimentos">Alimentos</a></li>
+            <li><a href="/minhas">Minhas Compras</a></li>
+            <li><a href="/contato">Contato</a></li>
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+        </ul>
+      
+    </nav>
+</header>
+
+<section class="intro" style="background-image: url('/static/img/fundoC.jpg'); margin-top: 80px;">
+    <h1>Aluguel de Jogos</h1>
+    
+</section>
+
+<div class="alugar-wrapper">
+
+    
+    <div class="game-horizontal">
+        <img src="{{ url_for('static', filename='img/arkhan.jpg') }}" alt="Arkhan">
+        <div class="game-info">
+            <h3>Arkham</h3>
+            <p>
+                Arkham Horror é um aclamado jogo de tabuleiro (ou Living Card Game, dependendo da versão) cooperativo que transporta os jogadores para o sombrio e sinistro universo criado por H.P. Lovecraft.
+            </p>
+            <a href="/minhas?game=arkhan">
+                <button class="reserve-btn">Reservar Agora</button>
+            </a>
+        </div>
+    </div>
+
+    
+    <div class="game-horizontal">
+        <img src="{{ url_for('static', filename='img/trivial.jpg') }}" alt="Horror">
+        <div class="game-info">
+            <h3>Trivial Pursuit</h3>
+            <p>
+                Trivial Pursuit: Horror Ultimate Edition leva o amado formato de perguntas e respostas e o mergulha de cabeça em 100 anos de filmes, TV e publicações mais assustadores da história.
+            </p>
+            <a href="/minhas?game=trivial">
+                <button class="reserve-btn">Reservar Agora</button>
+            </a>
+        </div>
+    </div>
+
+   
+    <div class="game-horizontal">
+        <img src="{{ url_for('static', filename='img/madness.webp') }}" alt="Madness">
+        <div class="game-info">
+            <h3>Madness</h3>
+            <p>
+                Ele transporta os Investigadores para as ruas assustadoras e edifícios sinistros de Arkham para desvendar mistérios e enfrentar o horror cósmico.
+            </p>
+            <a href="/minhas?game=madness">
+                <button class="reserve-btn">Reservar Agora</button>
+            </a>
+        </div>
+    </div>
+
+    <div class="game-horizontal">
+        <img src="{{ url_for('static', filename='img/nosferato.png') }}" alt="Nosferato">
+        <div class="game-info">
+            <h3>Nosferatu</h3>
+            <p>
+                Participe de cerimônias proibidas, invoque entidades e tente sobreviver às consequências de perturbar o desconhecido.
+            </p>
+            <a href="/minhas?game=ritual">
+                <button class="reserve-btn">Reservar Agora</button>
+            </a>
+        </div>
+    </div>
+
+   
+    <div class="game-horizontal">
+        <img src="{{ url_for('static', filename='img/Eldritch.jpg') }}" alt="Casa da Névoa">
+        <div class="game-info">
+            <h3>Eldritch</h3>
+            <p>
+                Um tabuleiro cheio de salas ocultas, espíritos perdidos e portas que mudam de lugar. Cada turno revela um novo terror.
+            </p>
+            <a href="/minhas?game=mist-house">
+                <button class="reserve-btn">Reservar Agora</button>
+            </a>
+        </div>
+    </div>
+
+    
+    <div class="game-horizontal">
+        <img src="{{ url_for('static', filename='img/Ha2.jpg') }}" alt="O Sussurro">
+        <div class="game-info">
+            <h3>Halloween</h3>
+            <p>
+                Um jogo investigativo onde cada pista vem acompanhada de vozes vindas do além. Confie apenas no que não quer te enganar.
+            </p>
+            <a href="/minhas?game=whisper">
+                <button class="reserve-btn">Reservar Agora</button>
+            </a>
+        </div>
+    </div>
+
+    
+    <div class="game-horizontal">
+        <img src="{{ url_for('static', filename='img/dreaful.circus.jpg') }}" alt="Lendas do Subsolo">
+        <div class="game-info">
+            <h3>Dreaful Circus</h3>
+            <p>
+                Desbrave cavernas antigas, criaturas deformadas e passagens amaldiçoadas. Nem sempre o caminho mais iluminado é o mais seguro.
+            </p>
+            <a href="/minhas?game=underground">
+                <button class="reserve-btn">Reservar Agora</button>
+            </a>
+        </div>
+    </div>
+
+    
+    
+
+</div>
+
+<footer>
+    <p>&copy; 2025 Assombrado Games. Todos os direitos reservados.</p>
+    <p><a href="#">Política de Privacidade</a> | <a href="#">Termos de Serviço</a></p>
+</footer>
+
+</body>
+</html>

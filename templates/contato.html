@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - Assombrado Games</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nosifer&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estiloContato.css') }}">
+   
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <a href="/"><img src="{{ url_for('static', filename='img/assombra.png') }}" alt="Assombrado Games"></a>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="/alugar">Alugar</a></li>
+            <li><a href="/alimentos">Alimentos</a></li>
+            <li><a href="/minhas">Minhas Compras</a></li>
+            <li><a href="/contato">Contato</a></li>
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+        </ul>
+        
+    </nav>
+</header>
+
+<section class="contato">
+    <div class="intro">
+        <h1>Entre em Contato</h1>
+        
+    </div>
+
+    <div class="contato-info">
+        <div class="contato-item">
+            <h3>E-mail</h3>
+            <p>Tem alguma dúvida? Envie um e-mail para:</p>
+            <a href="mailto:meajuda@assombradogames.com.br">meajuda@assombradogames.com.br</a>
+        </div>
+
+        <div class="contato-item">
+            <h3>Telefone</h3>
+            <p>Você pode ligar a qualquer hora para:</p>
+            <a href="tel:08005912117">0800 591 2117</a>
+        </div>
+
+        <div class="contato-item">
+            <h3>Retire no Local</h3>
+            <p>Venha buscar seu boardgame com nosso clube Assombrado Games! Endereço:</p>
+            <p><strong>Rua Neblina Vermelha, nº 1313</strong></p>
+        </div>
+    </div>
+
+    
+</section>
+
+<footer>
+    <p>&copy; 2025 Assombrado Games. Todos os direitos reservados.</p>
+    <p><a href="#">Política de Privacidade</a> | <a href="#">Termos de Serviço</a></p>
+</footer>
+
+</body>
+</html>

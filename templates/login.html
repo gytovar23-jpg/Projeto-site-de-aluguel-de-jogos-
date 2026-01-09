@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Assombrado</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/stylelogin.css') }}">
+</head>
+<body>
+
+<div class="login-container">
+    <h1>Assombrado Games</h1>
+
+    <form id="loginForm">
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="password" id="password" placeholder="Senha" required>
+        <button type="submit">Entrar</button>
+    </form>
+
+    <p>Não tem conta? <a href="/criarConta">Criar Conta</a></p>
+</div>
+
+<script>
+document.getElementById("loginForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+
+    fetch("/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.success) {
+            window.location.href = "/";
+        } else {
+            alert(data.message);
+        }
+    });
+});
+</script>
+
+</body>
+</html>

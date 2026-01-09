@@ -1,0 +1,339 @@
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at center, #000000cc 40%, #1a0000cc 100%),
+    url('back.jpg');
+
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: #fff;
+}
+
+header {
+  background: black;
+  padding: 0px 90px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+header .logo img {
+  width: 100px;
+  transition: transform 0.3s ease;
+}
+
+header .logo img:hover {
+  transform: scale(1.1);
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin-right: 20px;
+  padding: 10px 25px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 0, 0, 0.2);
+  border-radius: 12px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.15);
+  transition: 0.3s ease-in-out;
+}
+
+header nav ul:hover {
+  box-shadow: 0 0 25px rgba(255, 30, 30, 0.4);
+}
+
+header nav ul li a {
+  color: #ff1e1e;
+  text-decoration: none;
+  font-size: 1.2em;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+header nav li a:hover {
+  color: #fff;
+  transform: scale(1.1);
+  text-shadow: 0 0 10px #ff1e1e;
+}
+
+
+.minhas-compras {
+  padding: 120px 20px 50px 20px;
+  background: rgb(37, 17, 17);
+  width: 90%;
+  border: #070606 1px solid;
+  margin: auto;
+  margin-top: 80px;
+  text-align: center; 
+}
+
+.minhas-compras h1 {
+  font-family: 'Nosifer', cursive;
+  font-size: 60px;
+  color: #ff1e1e;
+  text-shadow: 0 0 25px #b30000;
+  margin-bottom: 30px;
+  margin-top: -5px;
+}
+
+#status-title {
+  font-size: 50px;
+  color: #ff1e1e;
+  text-shadow: 0 0 15px #b30000;
+  text-align: left; 
+  margin-bottom: 20px;
+  padding-left: 10%;
+  width: 90%;
+  margin-top: 110px;
+  margin-left: 90px;
+}
+
+.compra-item {
+  display: flex;
+  justify-content: center; 
+  background: rgba(0, 0, 0, 0.75);
+  padding: 20px;
+  border-radius: 15px;
+  width: 80%;
+  max-width: 900px;
+  margin: 30px auto;
+  box-shadow: 0 0 25px rgba(255, 0, 0, 0.2), inset 0 0 15px rgba(0, 0, 0, 0.6);
+  align-items: center; 
+  flex-wrap: wrap; 
+}
+
+.compra-item img {
+  width: 100%;
+  height: auto; 
+  max-width: 290px;
+  border-radius: 10px;
+  margin-right: 28px;
+  filter: brightness(0.88);
+  transition: 0.3s;
+  object-fit: cover; 
+}
+
+.compra-info h3 {
+  font-size: 2.5em;
+  font-family: 'Nosifer', cursive;
+  color: #ff1e1e;
+  text-shadow: 0 0 10px #b30000;
+  margin-bottom: 10px;
+  text-align: center; 
+}
+
+.compra-info p {
+  color: #e6e6e6;
+  font-size: 1.15em;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  text-align: center; 
+}
+
+
+.devolver-btn {
+  background: linear-gradient(135deg, #4a0000, #8b0000);
+  color: white;
+  padding: 14px 32px;
+  font-size: 1.15em;
+  border: 2px solid rgba(255, 0, 0, 0.4);
+  cursor: pointer;
+  border-radius: 12px;
+  transition: 0.25s ease;
+  box-shadow: 0 0 12px rgba(255, 0, 0, 0.25);
+  letter-spacing: 1px;
+  margin: 0 auto; 
+  display: block;
+}
+
+.devolver-btn:hover {
+  background: linear-gradient(135deg, #b30000, #ff0000);
+  transform: translateY(-2px);
+  box-shadow: 0 0 22px rgba(255, 0, 0, 0.6);
+  border-color: rgba(255, 100, 100, 0.8);
+}
+
+@media (max-width: 780px) {
+  .compra-item {
+    flex-direction: column; 
+    text-align: center;
+  }
+
+  .compra-item img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    margin: 0 0 20px 0;
+  }
+
+  .compra-info {
+    max-width: 100%;
+  }
+}
+
+#food-title {
+  font-size: 45px;
+  color: #ff1e1e;
+  text-shadow: 0 0 15px #b30000;
+  text-align: left;
+  margin-bottom: 30px;
+  padding-left: 10%;
+  width: 90%;
+}
+
+.food-item {
+  display: flex;
+  justify-content: space-between; 
+  background: rgba(0, 0, 0, 0.75);
+  padding: 20px;
+  border-radius: 15px;
+  width: 30%;
+  max-width: 900px;
+  margin: 20px auto;
+  box-shadow: 0 0 25px rgba(255, 0, 0, 0.2), inset 0 0 15px rgba(0, 0, 0, 0.6);
+  align-items: center;
+  flex-wrap: wrap; 
+}
+
+.food-item img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-right: 30px;
+  filter: brightness(0.88);
+  transition: 0.3s;
+}
+
+.food-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  max-width: 500px;
+}
+
+.food-info h3 {
+  font-size: 2.2em;
+  font-family: 'Nosifer', cursive;
+  color: #ff1e1e;
+  text-shadow: 0 0 10px #b30000;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.food-info p {
+  color: #e6e6e6;
+  font-size: 1.2em;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  text-align: justify; 
+}
+
+.food-price {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #4CAF50; 
+  text-shadow: 0 0 10px #b3b300;
+  margin-bottom: 10px;
+}
+
+.food-item button {
+  background: linear-gradient(135deg, #4a0000, #8b0000); 
+  color: white;
+  padding: 14px 32px;
+  font-size: 1.15em;
+  border: 2px solid rgba(255, 0, 0, 0.4);
+  cursor: pointer;
+  border-radius: 12px;
+  transition: 0.25s ease;
+  box-shadow: 0 0 12px rgba(255, 0, 0, 0.25);
+  letter-spacing: 1px;
+  margin-top: 10px;
+}
+
+.food-item button:hover {
+  background: linear-gradient(135deg, #b30000, #ff0000);
+  transform: translateY(-2px);
+  box-shadow: 0 0 22px rgba(255, 0, 0, 0.6);
+  border-color: rgba(255, 100, 100, 0.8);
+}
+
+
+@media (max-width: 780px) {
+  .food-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .food-item img {
+    width: 80%;
+    height: auto;
+    margin: 0 0 20px 0;
+  }
+
+  .food-info {
+    max-width: 100%;
+  }
+
+  .food-item button {
+    width: 100%;
+  }
+}
+
+
+.send-order-btn {
+    background-color: #ce0707; 
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.send-order-btn:hover {
+    background-color: #840000; 
+}
+
+
+#order-status {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+    color: rgb(53, 0, 0);
+}
+
+
+
+
+footer {
+  background: #1a0000;
+  color: #aaa;
+  padding: 20px;
+  text-align: center;
+}
+
+footer a {
+  color: #ff1e1e;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+  color: #fff;
+}
+

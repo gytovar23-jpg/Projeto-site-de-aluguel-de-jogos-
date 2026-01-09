@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alimentos - Assombrado Games</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nosifer&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estiloAlimentos.css') }}">
+    <!-- CSS comum para todas as páginas -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <a href="/"><img src="{{ url_for('static', filename='img/assombra.png') }}" alt="Assombrado Games"></a>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="/alugar">Alugar</a></li>
+            <li><a href="/alimentos">Alimentos</a></li>
+            <li><a href="/minhas">Minhas Compras</a></li>
+            <li><a href="/contato">Contato</a></li>
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            
+        
+    </nav>
+</header>
+
+<section class="intro" style="background-image: url('/static/img/ali2.jpg'); margin-top: 80px;">
+    <h1>Alimentos Assombrados</h1>
+</section>
+
+<div class="alimentos-wrapper">
+    <section class="categoria">
+        <h2>Salgados</h2>
+        <div class="food-item">
+    <span><img src="{{ url_for('static', filename='img/mumias-sichas.jpg') }}" alt=""></span>
+    <div class="food-info">
+        <h3>Mumias Sichas</h3>
+        
+        <p class="food-price">R$ 12,00</p> 
+        <button class="reserve-btn" onclick="addToOrder('Mumias Sichas')">Adicionar ao Pedido</button>
+    </div>
+</div>
+
+<div class="food-item">
+    <img src="{{ url_for('static', filename='img/salgado100.png') }}" alt="Salgado 2">
+    <div class="food-info">
+        <h3>Cento-Salgado</h3>
+        <p>Coma o salgado inseto com mais pernas do Brasil.</p>
+        <p class="food-price">R$ 12,00</p> 
+        <button class="reserve-btn" onclick="addToOrder('Cento-Salgado')">Adicionar ao Pedido</button>
+    </div>
+</div>
+
+<h2>Doces</h2>
+<div class="food-item">
+    <img src="{{ url_for('static', filename='img/cup.jpg') }}" alt="Doce 1">
+    <div class="food-info">
+        <h3>Cupcake Witch</h3>
+        <p>Um doce que vai fazer você querer mais. Perfeito para a hora do jogo.</p>
+        <p class="food-price">R$ 8,00</p> 
+        <button class="reserve-btn" onclick="addToOrder('Cupcake Witch')">Adicionar ao Pedido</button>
+    </div>
+</div>
+
+<div class="food-item">
+    <img src="{{ url_for('static', filename='img/milk.jpeg') }}" alt="Doce 2">
+    <div class="food-info">
+        <h3>MilkShake de Abobora</h3>
+        <p>Este doce traz a magia da noite para sua mesa de jogo. Não perca a chance!</p>
+        <p class="food-price">R$ 10,00</p> 
+        <button class="reserve-btn" onclick="addToOrder('MilkShake de Abobora')">Adicionar ao Pedido</button>
+    </div>
+</div>
+<h2>Bebida</h2>
+<div class="food-item">
+    <img src="{{ url_for('static', filename='img/caolho.jpg') }}" alt="Suco">
+    <div class="food-info">
+        <h3>Caolho</h3>
+        <p>O suco mais refrescante que você já provou, para acompanhar seus jogos de terror.</p>
+        <p class="food-price">R$ 6,00</p> 
+        <button class="reserve-btn" onclick="addToOrder('Caolho')">Adicionar ao Pedido</button>
+    </div>
+</div>
+
+</div>
+
+<footer>
+    <p>&copy; 2025 Assombrado Games. Todos os direitos reservados.</p>
+    <p><a href="#">Política de Privacidade</a> | <a href="#">Termos de Serviço</a></p>
+</footer>
+
+<script>
+
+function addToOrder(foodName) {
+    let order = JSON.parse(localStorage.getItem('foodOrder')) || {}; 
+    if (order[foodName]) {
+        order[foodName] += 1; 
+    } else {
+        order[foodName] = 1; 
+    }
+    localStorage.setItem('foodOrder', JSON.stringify(order)); 
+    alert(foodName + ' foi adicionado ao pedido!');
+    window.location.href = '/minhas'; 
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assombrado Games - Jogos de Tabuleiro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nosifer&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    
+</head>
+<body>
+    
+    <header>
+    <div class="logo">
+        <a href="/"><img src="{{ url_for('static', filename='img/assombra.png') }}" alt="Assombrado Games"></a>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="/alugar">Alugar</a></li>
+            <li><a href="/alimentos">Alimentos</a></li>
+            <li><a href="/minhas">Minhas Compras</a></li>
+            <li><a href="/contato">Contato</a></li>
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+        </ul>
+        
+    </nav>
+</header>
+
+    <section class="intro">
+        <h1>Bem-vindo ao Assombrado Games</h1>
+        <p>Foco em jogos de tabuleiro com temas assombrados.</p>
+        <a href="/alugar">
+        <button>Alugar Jogos</button></a>
+    </section>
+
+    
+
+    <section class="categories">
+        <h2>Mais Alugados</h2>
+        <div class="category-list">
+
+            <div class="category-item">
+                <img src="{{ url_for('static', filename='img/arkhan.jpg') }}" alt="Arkhan">
+                <a href="/alugar">
+                <button class="category-btn">Alugar</button></a>
+                <h3>Arkhan</h3>
+                <p class="game-description">Arkham Horror é um aclamado jogo de tabuleiro (ou Living Card Game, dependendo da versão) cooperativo que transporta os jogadores para o sombrio e sinistro universo criado por H.P. Lovecraft.</p>
+            </div>
+
+            <div class="category-item">
+                <img src="{{ url_for('static', filename='img/trivial.jpg') }}" alt="Horror">
+                <a href="/alugar">
+                    <button class="category-btn">Alugar</button>
+                </a>
+                <h3>Trivial Pursuit</h3>
+                <p class="game-description">Trivial Pursuit: Horror Ultimate Edition leva o amado formato de perguntas e respostas e o mergulha de cabeça em 100 anos de filmes, TV e publicações mais assustadores da história..</p>
+            </div>
+
+            <div class="category-item">
+                <img src="{{ url_for('static', filename='img/madness.webp') }}" alt="Madness">
+                <a href="/alugar">
+                    <button class="category-btn">Alugar</button>
+                </a>
+                <h3>Madness</h3>
+                <p class="game-description">Ele transporta os Investigadores para as ruas assustadoras e edifícios sinistros de Arkham para desvendar mistérios e enfrentar o horror cósmico.</p>
+            </div>
+
+        </div>
+    </section>
+
+
+ <section class="how-it-works">
+        <h2>Como funciona?</h2>
+        <p>
+            Somos um clube dedicado aos apaixonados por jogos de tabuleiro temáticos e sombrios. 
+            
+            <br><br>
+            Nossos jogos tem o preço fixo de <strong>R$ 50,00 por semana</strong>, permitindo que você mergulhe em aventuras aterrorizantes sem se preocupar com custos adicionais.
+            <br><br>
+            Também oferecemos uma seleção de alimentos temáticos para tornar sua experiência ainda mais imersiva.
+            <br><br>
+            Após realizar sua locação pelo site, basta comparecer à nossa Sede Assombrada para efetuar o pagamento e retirar seu gameboard.
+            Estamos localizados na misteriosa <strong>Rua Neblina Vermelha, nº 1313 – Bairro Noite Eterna</strong>.
+            
+        </p>
+    </section>
+
+
+
+    <footer>
+        <p>&copy; 2025 Assombrado Games. Todos os direitos reservados.</p>
+        <p><a href="#">Política de Privacidade</a> | <a href="#">Termos de Serviço</a></p>
+    </footer>
+
+</body>
+</html>

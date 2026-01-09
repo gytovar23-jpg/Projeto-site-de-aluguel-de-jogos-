@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas Compras - Assombrado Games</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nosifer&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estiloM.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <a href="/"><img src="{{ url_for('static', filename='img/assombra.png') }}" alt="Assombrado Games"></a>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="/alugar">Alugar</a></li>
+            <li><a href="/alimentos">Alimentos</a></li>
+            <li><a href="/minhas">Minhas Compras</a></li>
+            <li><a href="/contato">Contato</a></li>
+            <li><a href="{{ url_for('logout') }}" onclick="clearGameFromLocalStorage()">Logout</a>
+</li>
+        </ul>
+    </nav>
+</header>
+
+<section class="minhas-compras">
+    <h1>Minhas Compras</h1>
+    <h2 id="status-title">Jogo Alugado</h2>
+
+    <div class="compra-item">
+        <img id="game-img" src="default.jpg" alt="Jogo Alugado">
+        <div class="compra-info">
+            <h3 id="game-name">Nome do Jogo</h3>
+            <p id="game-status"><strong>Status:</strong> Nenhum jogo alugado</p>
+            <button class="devolver-btn">Devolver Jogo</button>
+        </div>
+    </div>
+
+    <h2 id="food-title">Alimentos Adicionados</h2>
+    <div id="foodList"></div>
+
+</section>
+<div id="foodList"></div>
+
+
+<button id="send-order-btn" class="send-order-btn">Enviar Pedido</button>
+<p id="order-status"></p>
+
+
+<footer>
+    <p>&copy; 2025 Assombrado Games. Todos os direitos reservados.</p>
+    <p><a href="#">Política de Privacidade</a> | <a href="#">Termos de Serviço</a></p>
+</footer>
+
+<script>
+   
+    function loadFoodFromLocalStorage() {
+        const foodOrder = JSON.parse(localStorage.getItem('foodOrder')) || {};
+        return foodOrder;
+    }
+
+    function displayFoodOrder() {
+        const foodOrder = loadFoodFromLocalStorage();
+        const foodListDiv = document.getElementById('foodList');
+
+        if (Object.keys(foodOrder).length === 0) {
+            foodListDiv.innerHTML = '<p>Nenhum alimento foi adicionado ao pedido.</p>';
+        } else {
+            foodListDiv.innerHTML = '';
+            for (const food in foodOrder) {
+                const foodItem = document.createElement('div');
+                foodItem.classList.add('food-item');
+                foodItem.innerHTML = `
+                    <div class="food-info">
+                        <h3>${food}</h3>
+                        <p>Quantidade: ${foodOrder[food]}</p>
+                        <p class="food-price">R$ 12,00</p>
+                        <button onclick="removeFood('${food}')">Devolver</button>
+                    </div>
+                `;
+                foodListDiv.appendChild(foodItem);
+            }
+        }
+    }
+
+  
+    function removeFood(foodName) {
+        const foodOrder = loadFoodFromLocalStorage();
+        if (foodOrder[foodName]) {
+            foodOrder[foodName] -= 1;
+            if (foodOrder[foodName] <= 0) {
+                delete foodOrder[foodName];
+            }
+            localStorage.setItem('foodOrder', JSON.stringify(foodOrder));
+            displayFoodOrder();
+        }
+    }
+
+    
+    function clearFoodOrder() {
+        localStorage.removeItem('foodOrder');
+        displayFoodOrder();
+    }
+
+    
+    function getGameFromUrl() {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get('game');
+    }
+
+    
+    function setGameInLocalStorage(gameName) {
+        localStorage.setItem('currentGame', gameName);
+    }
+
+  
+    function loadGameFromLocalStorage() {
+        const savedGame = localStorage.getItem('currentGame');
+        return savedGame ? savedGame : null;
+    }
+
+    
+    function clearGameFromLocalStorage() {
+        localStorage.removeItem('currentGame');
+    }
+
+    
+    function clearGameFromUrl() {
+        window.history.replaceState(null, '', 'minhas.html');
+    }
+
+    window.onload = function() {
+        displayFoodOrder(); 
+
+        let gameName = loadGameFromLocalStorage();  
+        const gameImg = document.getElementById('game-img');
+        const gameTitle = document.getElementById('game-name');
+        const gameStatus = document.getElementById('game-status');
+        const devolverBtn = document.querySelector('.devolver-btn');
+        const statusTitle = document.getElementById('status-title');
+
+        if (!gameName) {
+            gameName = getGameFromUrl(); 
+        }
+
+        
+        if (gameName) {
+            switch(gameName) {
+                case 'arkhan':
+                    gameImg.src = "{{ url_for('static', filename='img/arkhan.jpg') }}";
+                    gameTitle.textContent = 'Arkham Horror';
+                    gameStatus.textContent = 'Status: Alugado';
+                    break;
+                case 'trivial':
+                    gameImg.src = "{{ url_for('static', filename='img/trivial.jpg') }}";
+                    gameTitle.textContent = 'Trivial Pursuit';
+                    gameStatus.textContent = 'Status: Alugado';
+                    break;
+                case 'madness':
+                    gameImg.src = "{{ url_for('static', filename='img/madness.webp') }}";
+                    gameTitle.textContent = 'Madness';
+                    gameStatus.textContent = 'Status: Alugado';
+                    break;
+                case 'ritual':
+                    gameImg.src = "{{ url_for('static', filename='img/nosferato.png') }}";
+                    gameTitle.textContent = 'Nosferatu';
+                    gameStatus.textContent = 'Status: Alugado';
+                    break;
+                case 'mist-house':
+                    gameImg.src = "{{ url_for('static', filename='img/Eldritch.jpg') }}";
+                    gameTitle.textContent = 'Eldritch Horror';
+                    gameStatus.textContent = 'Status: Alugado';
+                    break;
+                case 'whisper':
+                    gameImg.src = "{{ url_for('static', filename='img/hallowen.jpg') }}";
+                    gameTitle.textContent = 'Halloween';
+                    gameStatus.textContent = 'Status: Alugado';
+                    break;
+                case 'underground':
+                    gameImg.src = "{{ url_for('static', filename='img/dreaful.circus.jpg') }}";
+                    gameTitle.textContent = 'Dreaful Circus';
+                    gameStatus.textContent = 'Status: Alugado';
+                    break;
+                
+                default:
+                    gameImg.src = 'default.jpg';
+                    gameTitle.textContent = 'Nenhum Jogo Escolhido';
+                    gameStatus.textContent = '';
+            }
+
+            setGameInLocalStorage(gameName);  
+            statusTitle.textContent = "Jogo Alugado"; 
+        } else {
+            gameImg.style.display = 'none';  
+            gameTitle.textContent = 'Nenhum Jogo Escolhido';
+            gameStatus.textContent = '';
+            devolverBtn.style.display = 'none';  
+            statusTitle.textContent = "";
+        }
+
+      
+        devolverBtn.onclick = function() {
+            clearGameFromLocalStorage();  
+            clearGameFromUrl(); 
+            window.location.href = '/alugar';  
+        };
+        
+function clearGameFromLocalStorage() {
+    localStorage.removeItem('currentGame');  
+    localStorage.removeItem('foodOrder');   
+}
+
+    };
+   
+document.getElementById('send-order-btn').addEventListener('click', function() {
+    
+    const foodOrder = loadFoodFromLocalStorage();
+    const gameName = loadGameFromLocalStorage(); 
+
+    if (Object.keys(foodOrder).length === 0) {
+        
+        document.getElementById('order-status').textContent = "Nenhum alimento foi adicionado ao pedido.";
+        document.getElementById('order-status').style.color = "red"; 
+    } else {
+        
+        document.getElementById('order-status').textContent = "Pedido enviado com sucesso!";
+        document.getElementById('order-status').style.color = "green"; 
+        
+        
+        clearFoodOrder();
+
+        
+        clearGameFromLocalStorage();
+
+        
+        document.getElementById('game-img').style.display = 'none';  
+        document.getElementById('game-name').textContent = 'Nenhum Jogo Escolhido';
+        document.getElementById('game-status').textContent = '';
+        document.querySelector('.devolver-btn').style.display = 'none';  
+        document.getElementById('status-title').textContent = '';  
+    }
+});
+
+
+function clearGameFromLocalStorage() {
+    localStorage.removeItem('currentGame'); 
+    localStorage.removeItem('foodOrder');    
+}
+
+
+</script>
+
+</body>
+</html>
